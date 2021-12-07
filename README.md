@@ -53,3 +53,22 @@ sql
 another db -> backing
 
 acoplable o desacoplable 
+
+
+
+ultima ecmasscript -> 2021, 2020 , 2016
+
+
+```
+```
+
+
+```
+npm init
+eslint --init
+npm install
+npm install restify
+npm install restify-router
+npm install morgan
+npm install mongoose
+```
