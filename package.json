@@ -1,0 +1,29 @@
+{
+  "name": "weekendv2",
+  "version": "1.0.0",
+  "description": "Linter -> herramienta -> mejorar los estilos de codigo",
+  "main": "index.js",
+  "author": "",
+  "license": "ISC",
+  "scripts": {
+    "dev": "NODE_ENV=development APPLICATION=restify nodemon --watch 'src/**/*.ts' --ignore 'src/**/*.spec.ts' --exec node -r @swc/register -r dotenv/config index.ts"
+  },
+  "devDependencies": {
+    "@swc/cli": "0.1.27",
+    "@swc/core": "1.2.40",
+    "@swc/core-linux": "1.2.40",
+    "@swc/core-linux-musl": "1.2.40",
+    "@swc/register": "^0.1.7",
+    "@typescript-eslint/eslint-plugin": "^5.6.0",
+    "@typescript-eslint/parser": "^5.6.0",
+    "eslint": "^8.4.0",
+    "eslint-config-google": "^0.14.0"
+  },
+  "dependencies": {
+    "dotenv": "^10.0.0",
+    "mongoose": "^6.0.15",
+    "morgan": "^1.10.0",
+    "restify": "^8.6.0",
+    "restify-router": "^0.6.2"
+  }
+}
