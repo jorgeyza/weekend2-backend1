@@ -1,9 +1,9 @@
-import {Router} from 'restify-router';
+import { Router } from 'restify-router'
 
-import ProfileRouter from './profile.route';
+import ProfileRouter from './profile.route'
 
-const RouterManager = new Router();
+const RouterManager = new Router()
 
-RouterManager.add('/profiles', ProfileRouter);
+RouterManager.add('/profiles', ProfileRouter)
 
-export default RouterManager;
+export default RouterManager
