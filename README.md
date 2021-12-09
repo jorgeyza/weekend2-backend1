@@ -71,4 +71,14 @@ npm install restify
 npm install restify-router
 npm install morgan
 npm install mongoose
+npm install -g nodemon
+npm install -g serve
+npm install -g dotenv
+```
+
+
+add only linux env to package.json
+```
+    "@swc/core-linux": "1.2.40",
+    "@swc/core-linux-musl": "1.2.40",
 ```

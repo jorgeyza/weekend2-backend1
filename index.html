@@ -1,0 +1,109 @@
+<html>
+<div>
+    <button onClick="processData()">Enviar perfil</button>
+</div>
+<script>
+
+    const sendData = async (url, document) => {
+        try {
+            const fetchOptions = {
+                method: 'POST',
+                body: document,
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            }
+            const response = await fetch(url, fetchOptions)
+            const { data = {}, success } = await response.json()
+            if (success)
+                return data
+            throw new Error('Error when load response from backend')
+        } catch (error) {
+            console.log("🚀 ~ file: index.html ~ line 22 ~ sendData ~ error", error)
+            throw error
+        }
+    }
+
+    async function processData() {
+        try {
+
+            let janetNataly = {
+                    firstName: 'Janet',
+                    lastName: 'Gutierrez ',
+                    urlLinkedin: 'https://www.linkedin.com/in/janet-nataly-gutierrez-montalban/',
+                    experiences: [
+                        {
+                            jobPosition: 'Chapter Lead',
+                            companyName: 'Rimac Seguros y Reaseguros'
+                        },
+                        {
+                            jobPosition: 'Analista frontend developer',
+                            companyName: 'Rimac Seguros y Reaseguros'
+                        },
+                        {
+                            jobPosition: 'Personal docente',
+                            companyName: 'Santa Maria Magdalena'
+                        }
+                    ],
+                    educations: [
+                        {
+                            career: 'Front-End Developer',
+                            institutionName: 'Laboratoria'
+                        },
+                        {
+                            career: 'Ingenieria de sistemas',
+                            institutionName: 'Universidad Alas Peruanas'
+                        }
+                    ]
+            }
+
+
+            let jeanGonzales = {
+                    firstName: 'Janet',
+                    lastName: 'Gutierrez ',
+                    urlLinkedin: 'https://www.linkedin.com/in/jean-andre-gonzales-simon/',
+                    experiences: [
+                        {
+                            jobPosition: 'CRM & Custom Experience Analyst',
+                            companyName: 'Rimac Seguros y Reaseguros'
+                        },
+                        {
+                            jobPosition: 'Performance Ecommerce',
+                            companyName: 'Ripley'
+                        },
+                        {
+                            jobPosition: 'Asistente Administrativo',
+                            companyName: 'ICPNA'
+                        }
+                    ],
+                    educations: [
+                        {
+                            career: 'Ingles',
+                            institutionName: 'ICPNA'
+                        },
+                        {
+                            career: 'Administracion de base de datos',
+                            institutionName: 'Universidad nacional de ingenieria'
+                        }
+                    ]
+            }
+
+            const Data = []
+
+            Data.push(janetNataly)
+            Data.push(jeanGonzales)
+
+            const stringData = JSON.stringify(Data)
+
+            const urlHost = 'http://localhost:8002/api/v1/profiles/addMultipleProfiles'
+
+            const responseMessage = await sendData(urlHost, stringData)
+        } catch (error) {
+            console.log("🚀 ~ file: index.html ~ line 102 ~ processData ~ error", error)
+            throw error
+        }
+    }
+
+</script>
+
+</html>
