@@ -2154,7 +2154,7 @@ restify-cors-middleware2@^2.1.2:
 
 restify-errors@^8.0.2:
   version "8.0.2"
-  resolved "https://registry.npmjs.org/restify-errors/-/restify-errors-8.0.2.tgz"
+  resolved "https://registry.yarnpkg.com/restify-errors/-/restify-errors-8.0.2.tgz#0b9678738e37888e4fefe52aa6ee92771ec954e9"
   integrity sha512-UsXUVQo7M26xoQzeUcZQ0+H8L2t9DGzrXcAgR3WB/1vnbl+UdI4tZ1PqYsN+sS5WnqHKZ0Xy9w0CKf83bbrwYA==
   dependencies:
     "@netflix/nerror" "^1.0.0"

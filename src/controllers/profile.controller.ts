@@ -33,11 +33,11 @@ class PROFILE {
         // console.time(`${Number(index) + 1} entry`)
         // console.log(`Procesando :[${Number(index) + 1}] de un total de : [${profiles.length}]`)
         // console.log('🚀 ~ file: profile.controller.ts ~ line 32 ~ PROFILE ~ addMultipleProfilesToMongoDB ~ profile', profile)
-        const newProfile = new ProfileModel(profile)
-        const responseSave = await newProfile.save()
+        // const newProfile = new ProfileModel(profile)
+        // const responseSave = await newProfile.save()
         // console.log('🚀 ~ file: profile.controller.ts ~ line 36 ~ PROFILE ~ addMultipleProfilesToMongoDB ~ responseSave', responseSave)
         // console.timeEnd(`${Number(index) + 1} entry`)
-        newElements.push(responseSave._id)
+        // newElements.push(responseSave._id)
       }
 
       return { success: true, newElements }
