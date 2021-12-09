@@ -4,11 +4,11 @@ import { Router } from 'restify-router'
 import logger from 'morgan'
 import corsMiddleware  from 'restify-cors-middleware2'
 const router = new Router()
-
+// authorization Bearer
 const cors = corsMiddleware({
   preflightMaxAge: 5, // Optional
-  origins        : [ 'http://localhost:3000' ],
-  allowHeaders   : [ 'API-Token', 'Authorization' ], // explicarselos detalladamente el viernes ->
+  origins        : [ 'http://localhost:3000', 'http://localhost:3001' ],
+  allowHeaders   : [ 'API-Token', 'Authorization', 'ApiService' ], // explicarselos detalladamente el viernes ->
   exposeHeaders  : [ 'API-Token-Expiry' ]
 })
 const server = restify.createServer()

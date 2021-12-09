@@ -1,6 +1,48 @@
+import RestifyErrors from 'restify-errors'
 import { Router } from 'restify-router'
 import { profileController } from '../controllers/profile.controller'
 const ProfileRoute = new Router()
+
+const validateApiKeyService = (apiKey) => {
+  const { API_KEY_SERVICE } = process.env
+  if(API_KEY_SERVICE === apiKey)
+    return true
+
+  return false
+}
+
+const validateAuthorizationBearer = (authBearer) => {
+  if(authBearer)
+    return true
+
+  return false
+}
+
+const middlewareServiceAuth = (req, res, next) => {
+  try {
+    const { apiservice, authorization } = req.headers
+
+    const hasApiService = validateApiKeyService(apiservice)
+    let validateAuth = false
+    if(!hasApiService) {
+      const hasAuthBeare =  validateAuthorizationBearer(authorization)
+      validateAuth = hasAuthBeare
+      if(validateAuth)
+        next()
+    }
+
+    validateAuth = hasApiService
+
+    if(validateAuth)
+      next()
+
+    throw new Error('Not authenticate')
+  } catch (error) {
+    const newErr = new RestifyErrors.UnauthorizedError('No se ha proveido el auth bearer o el service api key')
+
+    return next(newErr)
+  }
+}
 
 // http://localhost:8080/api/v1/profiles/getAllProfiles?filterName=Cristhian
 
@@ -62,8 +104,9 @@ ProfileRoute.post('/addProfileToMongoDB', async (req, res) => {
   }
 })
 
-ProfileRoute.post('/addMultipleProfiles', async (req, res) => {
+ProfileRoute.post('/addMultipleProfiles', middlewareServiceAuth, async (req, res) => {
   try {
+    console.log(req.headers)
     const profiles = req.body
     const response = await profileController.addMultipleProfilesToMongoDB(profiles)
 
